@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل نظام لوردستاير لإدارة قطع الغيار وكماليات السيارات</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap');
+        
+        :root {
+            --bg-color: #0B0F19;
+            --surface-color: #111827;
+            --surface-accent: #1F2937;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --primary-accent: #3B82F6;
+            --primary-glow: rgba(59, 130, 246, 0.2);
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+            --danger-color: #EF4444;
+            --border-ratio: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* رأس الصفحة - تصميم مهيب وفخم جداً */
+        header {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #111827 0%, #030712 100%);
+            border: 1px solid var(--surface-accent);
+            border-radius: var(--border-ratio);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .logo-svg {
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 0 15px var(--primary-accent));
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* التنقل الداخلي الفخم */
+        nav {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-accent);
+            border-radius: var(--border-ratio);
+            padding: 15px 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+            background-color: var(--surface-accent);
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* أقسام المحتوى */
+        section {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-accent);
+            border-radius: var(--border-ratio);
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--surface-accent);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-right: 30px;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* الرسوم البيانية المتطورة والمبنية بالـ SVG لضمان الجمالية دون اعتماد خارجي */
+        .diagram-container {
+            background-color: #030712;
+            border: 1px solid var(--surface-accent);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 35px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+        }
+
+        .diagram-svg {
+            width: 100%;
+            max-width: 750px;
+            height: auto;
+        }
+
+        /* التصاميم البرمجية والهندسية */
+        .code-block {
+            background-color: #030712;
+            border: 1px solid var(--surface-accent);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: #E2E8F0;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* الجداول المقارنة الفخمة */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 35px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid var(--surface-accent);
+            padding: 15px 20px;
+            text-align: right;
+        }
+
+        th {
+            background-color: var(--surface-accent);
+            color: var(--text-primary);
+            font-weight: 800;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        /* تنبيهات مخصصة */
+        .alert {
+            border-right: 5px solid var(--primary-accent);
+            background-color: rgba(59, 130, 246, 0.05);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-bottom: 30px;
+        }
+
+        .alert-title {
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .alert-success {
+            border-right-color: var(--success-color);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+
+        .alert-warning {
+            border-right-color: var(--warning-color);
+            background-color: rgba(245, 158, 11, 0.05);
+        }
+
+        /* ذيل الصفحة */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--surface-accent);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo-container">
+            <!-- شعار SVG فخم جداً يعبر عن علامة تجارية للسيارات والأتمتة -->
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="#3B82F6" stroke-width="4" stroke-dasharray="10 5"/>
+                <path d="M25 45L50 25L75 45" stroke="#F9FAFB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M30 65H70" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+                <path d="M50 25V75" stroke="#3B82F6" stroke-width="3" stroke-dasharray="5 3"/>
+                <circle cx="50" cy="50" r="8" fill="#F59E0B"/>
+            </svg>
+        </div>
+        <h1>نظام لوردستاير (Lordstair System)</h1>
+        <p class="subtitle">المستندات الفنية ودليل التشغيل التفاعلي للأنوية الخمسة والأتمتة المتقدمة لمحلات قطع الغيار وتفصيل الخامات</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#architecture">هندسة الأنوية الخمسة</a></li>
+            <li><a href="#dynamic-fabrication">أداة التفصيل والتشغيل</a></li>
+            <li><a href="#operating-instructions">دليل الاستخدام والتشغيل</a></li>
+            <li><a href="#cybersecurity-blockchain">الأمن السيبراني والكتل</a></li>
+            <li><a href="#migration">نقل وتوطين البيانات</a></li>
+        </ul>
+    </nav>
+
+    <!-- القسم الأول: هندسة الأنوية الخمسة -->
+    <section id="architecture">
+        <h2>🛡️ هندسة الأنوية الخمسة (The 5-Core Architecture)</h2>
+        <p>
+            تستند بنية نظام <strong>لوردستاير</strong> إلى الفصل التام والمثالي للهياكل البرمجية والتشغيلية عبر خمس أنوية أساسية مستقلة في وظائفها ومترابطة بروتوكولياً. يضمن هذا الفصل الصارم كفاءة قصوى في استغلال موارد النظام وسهولة تعديل مكونات الواجهة بشكل منفصل دون الإضرار بسلامة منطق الأعمال أو التخزين الفيزيائي للبيانات.
+        </p>
+
+        <!-- رسم بياني فخم يوضح تدفق البيانات والعمليات عبر الأنوية -->
+        <div class="diagram-container">
+            <svg class="diagram-svg" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                <!-- خلفية المخطط -->
+                <rect width="800" height="450" rx="10" fill="#030712" stroke="#1F2937" stroke-width="2"/>
+                
+                <!-- نواة الواجهة -->
+                <rect x="275" y="20" width="250" height="60" rx="8" fill="#111827" stroke="#3B82F6" stroke-width="2"/>
+                <text x="400" y="55" fill="#F9FAFB" font-size="16" font-weight="bold" text-anchor="middle">💻 نواة الواجهة (UI Core)</text>
+                
+                <!-- خط ربط لأسفل -->
+                <path d="M400 80 V130" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrow)"/>
+                
+                <!-- نواة التنسيق والاتصال (المنسق المركزي) -->
+                <rect x="250" y="130" width="300" height="70" rx="8" fill="#1F2937" stroke="#10B981" stroke-width="2"/>
+                <text x="400" y="170" fill="#F9FAFB" font-size="16" font-weight="bold" text-anchor="middle">🔌 نواة التنسيق والاتصال (Orchestrator)</text>
+                
+                <!-- خطوط تفرع جانبية من المنسق -->
+                <!-- لليسار: الأمن -->
+                <path d="M250 165 H120 V250" stroke="#10B981" stroke-width="2"/>
+                <!-- للوسط: العمليات -->
+                <path d="M400 200 V250" stroke="#10B981" stroke-width="2"/>
+                <!-- لليمين: البيانات -->
+                <path d="M550 165 H680 V250" stroke="#10B981" stroke-width="2"/>
+                
+                <!-- نواة الأمن -->
+                <rect x="20" y="250" width="200" height="120" rx="8" fill="#111827" stroke="#EF4444" stroke-width="2"/>
+                <text x="120" y="285" fill="#F9FAFB" font-size="14" font-weight="bold" text-anchor="middle">🛡️ نواة الأمن</text>
+                <text x="120" y="315" fill="#9CA3AF" font-size="12" text-anchor="middle">سيرفر البلوكتشاين (SHA-256)</text>
+                <text x="120" y="340" fill="#9CA3AF" font-size="12" text-anchor="middle">خادم الأمن ورصد المعالج</text>
+                
+                <!-- نواة العمليات -->
+                <rect x="300" y="250" width="200" height="120" rx="8" fill="#111827" stroke="#F59E0B" stroke-width="2"/>
+                <text x="400" y="285" fill="#F9FAFB" font-size="14" font-weight="bold" text-anchor="middle">⚙️ نواة العمليات</text>
+                <text x="400" y="315" fill="#9CA3AF" font-size="12" text-anchor="middle">محرك الباكيند الشيئي (OOP)</text>
+                <text x="400" y="340" fill="#9CA3AF" font-size="12" text-anchor="middle">حاسبة التفصيل والهدر الحرة</text>
+                
+                <!-- نواة البيانات -->
+                <rect x="580" y="250" width="200" height="120" rx="8" fill="#111827" stroke="#3B82F6" stroke-width="2"/>
+                <text x="680" y="285" fill="#F9FAFB" font-size="14" font-weight="bold" text-anchor="middle">💾 نواة البيانات</text>
+                <text x="680" y="315" fill="#9CA3AF" font-size="12" text-anchor="middle">قاعدة بيانات SQLite المدمجة</text>
+                <text x="680" y="340" fill="#9CA3AF" font-size="12" text-anchor="middle">تشفير التكلفة وتصدير Excel</text>
+
+                <!-- تعريف الأسهم -->
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B82F6"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+
+        <h3>1. نواة الأمن (Security Core)</h3>
+        <p>
+            تضم خادمين سيبرانيين يعملان بالتوازي لمراقبة وتوثيق النظام بشكل متزامن:
+        </p>
+        <ul>
+            <li><strong>خادم البلوكتشاين (Blockchain Audit Server):</strong> يقوم بإنشاء سلسلة كتل (Blocks) تتبع الترتيب الحتمي وتخضع لآلية إثبات العمل (PoW). يوثق كل بلوك تفاصيل التوقيع الرقمي للمستخدم، نوع العملية، الإجراء المتخذ، وحالة نظام التشغيل لضمان عدم حدوث تراجع في البيانات أو حذف عشوائي من أطراف داخلية.</li>
+            <li><strong>خادم الأمن السيبراني والتحقق (Cybersecurity Server):</strong> يدير التشفير المتماثل (AES-Fernet) لحماية أسعار التكلفة وسجل الخصوصية لهواتف العملاء بقاعدة البيانات. يحتوي أيضاً على نظام مراقبة صلاحيات المستخدمين (RBAC) لحظر وصول أي موظف إلى قوائم خارج نطاق عمله.</li>
+        </ul>
+
+        <h3>2. نواة الواجهة (Interface Core)</h3>
+        <p>
+            تتحكم بالنظام التعريبي والتوطين الثنائي (عربي / إنجليزي). تقوم بحقن التنسيقات والسمات الفاخرة للواجهة للتجاوب التلقائي مع شاشات اللمس والأجهزة اللوحية دون الاعتماد على مكتبات تصميم مدمجة من لغات أخرى لتظل بايثونية نقية 100%.
+        </p>
+
+        <h3>3. نواة العمليات (Operations Core)</h3>
+        <p>
+            تمثل عقل الباكيند الحسابي والمنطقي. تعمل بالبرمجيات الشيئية (OOP) لتحويل صفوف الجداول الصامتة إلى كائنات قادرة على اتخاذ القرارات (مثل احتساب معدلات الهدر الديناميكي للخامات، مراجعة الورديات، جرد العجز النقدي الفعلي، وتنبيهات مستويات الطلب الحرجة).
+        </p>
+
+        <h3>4. نواة البيانات (Data Core)</h3>
+        <p>
+            تدير عمليات الإدخال والقراءة المباشرة من وإلى قاعدة البيانات المحلية المدمجة <strong>SQLite</strong>، مما يلغي تعقيد تثبيت أو تفعيل خوادم خارجية ويعزز العمل الخفيف والسريع للتطبيق المكتبي.
+        </p>
+
+        <h3>5. نواة التنسيق والاتصال (Coordination Core)</h3>
+        <p>
+            تلعب دور الوسيط والمنسق الفاصل (API Orchestrator). تتلقى طلبات الواجهة وتمررها أولاً لنواة الأمن للتدقيق والتوثيق الكتلوي، ثم توجهها لنواة العمليات للتحليل والتنفيذ، ومن ثم تأكيدها في نواة البيانات لإعطاء النتيجة النهائية للواجهة، مما يلغي تماماً إمكانية تجاوز البوابات الأمنية.
+        </p>
+    </section>
+
+    <!-- القسم الثاني: أداة التفصيل والتشغيل الديناميكي -->
+    <section id="dynamic-fabrication">
+        <h2>✂️ أداة التفصيل والتشغيل الديناميكي للخامات</h2>
+        <p>
+            أحد أهم الابتكارات في هذا النظام هو التخلص التام من قوالب الحسابات القياسية والجامدة التي تفترض فئات سيارات مفروضة مسبقاً. تم ابتكار <strong>أداة التفصيل والتشغيل الديناميكي</strong> لتمنح الفنيين والكاشيرات مرونة تشغيل مطلقة لكافة أنواع المواد (مثل لفات تظليل الفيميه، رولات الجلود والأقمشة لتنجيد المقاعد، ولفائف الأسلاك وضفائر النحاس الكهربائية).
+        </p>
+
+        <!-- رسم بياني يوضح عملية احتساب الهدر والقص والخامات المساعدة -->
+        <div class="diagram-container">
+            <svg class="diagram-svg" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="800" height="300" rx="10" fill="#030712" stroke="#1F2937" stroke-width="2"/>
+                
+                <!-- المادة الصافية المطلوبة -->
+                <rect x="50" y="80" width="220" height="100" rx="6" fill="#1E293B" stroke="#3B82F6" stroke-width="2"/>
+                <text x="160" y="125" fill="#F9FAFB" font-size="14" font-weight="bold" text-anchor="middle">📐 المادة الأساسية المطلوبة</text>
+                <text x="160" y="155" fill="#3B82F6" font-size="16" font-weight="bold" text-anchor="middle">الكمية الصافية (X)</text>
+                
+                <!-- الهدر والقص -->
+                <rect x="320" y="80" width="160" height="100" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2"/>
+                <text x="400" y="125" fill="#F9FAFB" font-size="14" font-weight="bold" text-anchor="middle">✂️ نسبة الهدر والقص</text>
+                <text x="400" y="155" fill="#EF4444" font-size="16" font-weight="bold" text-anchor="middle">+ (W %)</text>
+                
+                <!-- المجموع الإجمالي الفعلي المستهلك -->
+                <rect x="530" y="80" width="220" height="100" rx="6" fill="#111827" stroke="#10B981" stroke-width="2"/>
+                <text x="640" y="125" fill="#F9FAFB" font-size="14" font-weight="bold" text-anchor="middle">🔄 إجمالي الخصم الفعلي</text>
+                <text x="640" y="155" fill="#10B981" font-size="16" font-weight="bold" text-anchor="middle">X * (1 + W/100)</text>
+
+                <!-- علامة زائد وعلامة يساوي -->
+                <text x="295" y="140" fill="#F9FAFB" font-size="24" font-weight="bold" text-anchor="middle">+</text>
+                <text x="505" y="140" fill="#F9FAFB" font-size="24" font-weight="bold" text-anchor="middle">=</text>
+            </svg>
+        </div>
+
+        <div class="alert alert-success">
+            <div class="alert-title">📊 دقة وصيغة الحساب الرياضي لعملية التفصيل</div>
+            <p style="margin-bottom: 0;">
+                المعادلة البرمجية المعتمدة لحساب التكلفة الفعلية والخصم للمخزون هي:<br>
+                <strong>الكمية الكلية المستهلكة = الكمية الأساسية الصافية × (1 + نسبة الهدر / 100)</strong><br>
+                <strong>السعر الإجمالي المطلوب = (الكمية الكلية المستهلكة × سعر التجزئة للوحدة) + مصنعية الفني + تكلفة المواد المساعدة الأخرى</strong>
+            </p>
+        </div>
+
+        <p>
+            تتميز هذه الأداة بقدرتها على التعامل مع الكسور العشرية لمستويات الجرد الحقيقي للرولات، مما يحل بشكل نهائي مشكلة فاقد القص أو الهدر الناتج عن تشكيل المادة لتتناسب مع انحناءات الزجاج أو أحجام مقاعد السيارات المختلفة.
+        </p>
+
+        <h3>💡 نموذج تطبيقي حقيقي لتفصيل الخامة:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>اسم الخامة المستخدمة</th>
+                    <th>الكمية الصافية المطلوبة</th>
+                    <th>نسبة الهدر المخصصة</th>
+                    <th>الكمية الإجمالية المخصومة</th>
+                    <th>أجرة التركيب (شغل يد)</th>
+                    <th>سعر البيع النهائي للزبون</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>رول جلد ألماني بني فاخر</td>
+                    <td>4.0 متر مربع</td>
+                    <td>25.0%</td>
+                    <td>5.0 متر مربع</td>
+                    <td>200 ريال</td>
+                    <td>1000 ريال (سعر المتر: 160)</td>
+                </tr>
+                <tr>
+                    <td>رول فيميه نانو سيراميك 70%</td>
+                    <td>3.0 متر طولي</td>
+                    <td>12.0%</td>
+                    <td>3.36 متر طولي</td>
+                    <td>150 ريال</td>
+                    <td>368.4 ريال (سعر المتر: 65)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- القسم الثالث: دليل الاستخدام والتشغيل -->
+    <section id="operating-instructions">
+        <h2>⏱️ دليل الاستخدام والتشغيل العملي اليومي</h2>
+        <p>
+            صُمم النظام ليعمل بسلاسة تامة مع تتبع صارم لكل مرحلة من مراحل العمل اليومي لمتجر قطع غيار السيارات.
+        </p>
+
+        <h3>🚪 1. تسجيل الدخول والتحقق الآمن</h3>
+        <p>
+            عند بدء تشغيل النظام، يتعين على الموظف تسجيل الدخول باسم المستخدم وكلمة المرور المشفرة الخاصة به. يقوم النظام بمقارنة الكود البرمجي للكلمة المحمية بهاتفك لمنع قراءتها حتى من مسؤولي قاعدة البيانات.
+        </p>
+
+        <h3>⏱️ 2. فتح الوردية اليومية (شريان أمان الدرج)</h3>
+        <p>
+            لا يسمح النظام للكاشير أو المحاسب بتنفيذ أي عملية بيع أو إصدار أي فاتورة دون وجود <strong>وردية نشطة مفتوحة</strong> باسمه، وذلك لربط جرد الخزانة بالموظف المسؤول مباشرة.
+        </p>
+        
+        <!-- مخطط تدفق الوردية بسهم رسومي ممتع -->
+        <div class="diagram-container">
+            <svg class="diagram-svg" viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+                <rect width="800" height="150" rx="10" fill="#030712" stroke="#1F2937" stroke-width="2"/>
+                
+                <!-- الخطوة 1 -->
+                <rect x="30" y="35" width="210" height="80" rx="6" fill="#111827" stroke="#3B82F6" stroke-width="2"/>
+                <text x="135" y="70" fill="#F9FAFB" font-size="13" font-weight="bold" text-anchor="middle">1. إدخال كاش التأسيس</text>
+                <text x="135" y="95" fill="#9CA3AF" font-size="11" text-anchor="middle">(مثال: درج كاش فيه 200 ريال)</text>
+                
+                <!-- سهم 1 -->
+                <path d="M250 75 H280" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrow)"/>
+                
+                <!-- الخطوة 2 -->
+                <rect x="290" y="35" width="220" height="80" rx="6" fill="#111827" stroke="#10B981" stroke-width="2"/>
+                <text x="400" y="70" fill="#F9FAFB" font-size="13" font-weight="bold" text-anchor="middle">2. توليد معرّف الوردية</text>
+                <text x="400" y="95" fill="#9CA3AF" font-size="11" text-anchor="middle">(Shift ID فريد وغير قابل للتكرار)</text>
+                
+                <!-- سهم 2 -->
+                <path d="M520 75 H550" stroke="#10B981" stroke-width="3" marker-end="url(#arrow-green)"/>
+                
+                <!-- الخطوة 3 -->
+                <rect x="560" y="35" width="210" height="80" rx="6" fill="#111827" stroke="#EF4444" stroke-width="2"/>
+                <text x="665" y="70" fill="#F9FAFB" font-size="13" font-weight="bold" text-anchor="middle">3. تفعيل الربط الكتلوي</text>
+                <text x="665" y="95" fill="#9CA3AF" font-size="11" text-anchor="middle">(تسجيل الإطلاق بالبلوكتشاين)</text>
+
+                <!-- دالات الأسهم -->
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B82F6"/>
+                    </marker>
+                    <marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10B981"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+
+        <h3>🛒 3. تسجيل المبيعات وإصدار الفواتير</h3>
+        <p>
+            تتيح لوحة المبيعات إضافة قطع غيار عادية (تخصم تلقائياً كـ وحدات صحيحة) أو استدعاء "أداة التفصيل والتشغيل الديناميكي" لتسجيل تفصيل جلود، تظليل، أو أسلاك. بمجرد الضغط على زر <strong>إصدار الفاتورة</strong>، يولد التطبيق تصميماً يحاكي الطابعات الحرارية الكلاسيكية للفروع ليسهل قراءتها وتصديرها للعملاء.
+        </p>
+
+        <h3>🔒 4. إغلاق الوردية وجرد الكاش وتثبيت العجز</h3>
+        <p>
+            في نهاية اليوم التشغيلي، يقوم المحاسب بالدخول لصفحة الورديات لإجراء الإغلاق؛ حيث يقوم بحساب وجرد كافه الأموال النقدية المتوفرة بالدرج يدوياً وإدخالها بالنظام. يقوم النظام بمقارنة الكاش الفعلي المدخل مع الكاش المتوقع (الافتتاحي + المبيعات النقدية المسجلة) ليظهر الفارق بدقة تامة للمدراء كعجز أو زيادة نقدية موثقة في البلوكتشاين.
+        </p>
+    </section>
+
+    <!-- القسم الرابع: الأمن السيبراني ورصد العمليات -->
+    <section id="cybersecurity-blockchain">
+        <h2>🖥️ الأمن السيبراني ورصد نظام تشغيل الجهاز (OS Audit)</h2>
+        <p>
+            تتميز النواة الأمنية لنظام لوردستاير بالتكامل الوثيق والعميق مع بيئة نظام التشغيل المضيف للجهاز لضمان أمان سيبراني مطلق.
+        </p>
+
+        <!-- رسم بياني تفاعلي يوضح آلية ربط كتل البلوكتشاين بالهاش ومقاييس المعالج في ثانية حدوث العملية -->
+        <div class="diagram-container">
+            <svg class="diagram-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+                <rect width="800" height="320" rx="10" fill="#030712" stroke="#1F2937" stroke-width="2"/>
+                
+                <!-- كتلة 1 -->
+                <rect x="50" y="40" width="300" height="240" rx="8" fill="#111827" stroke="#EF4444" stroke-width="2"/>
+                <text x="200" y="75" fill="#F9FAFB" font-size="15" font-weight="bold" text-anchor="middle">📦 كتلة بلوكتشاين سابقة (Block N-1)</text>
+                <path d="M70 100 H330" stroke="#1F2937" stroke-width="2"/>
+                <text x="80" y="130" fill="#9CA3AF" font-size="12" text-anchor="start">🔑 الهاش الحالي: sha256_hash_n1</text>
+                <text x="80" y="160" fill="#10B981" font-size="12" text-anchor="start">👤 المستخدم: cashier</text>
+                <text x="80" y="190" fill="#3B82F6" font-size="12" text-anchor="start">🖥️ استهلاك المعالج: 14.5%</text>
+                <text x="80" y="220" fill="#F59E0B" font-size="12" text-anchor="start">📊 استهلاك الذاكرة: 41.2%</text>
+                
+                <!-- سهم ربط للكتلة التالية -->
+                <path d="M350 160 H450" stroke="#EF4444" stroke-width="3" stroke-dasharray="5 3" marker-end="url(#arrow-red)"/>
+                
+                <!-- كتلة 2 -->
+                <rect x="450" y="40" width="300" height="240" rx="8" fill="#111827" stroke="#10B981" stroke-width="2"/>
+                <text x="600" y="75" fill="#F9FAFB" font-size="15" font-weight="bold" text-anchor="middle">📦 الكتلة الحالية المشفرة (Block N)</text>
+                <path d="M470 100 H730" stroke="#1F2937" stroke-width="2"/>
+                <text x="480" y="130" fill="#EF4444" font-size="12" text-anchor="start">🔗 الهاش السابق: sha256_hash_n1</text>
+                <text x="480" y="160" fill="#10B981" font-size="12" text-anchor="start">👤 المستخدم: admin</text>
+                <text x="480" y="190" fill="#3B82F6" font-size="12" text-anchor="start">🖥️ استهلاك المعالج: 22.1%</text>
+                <text x="480" y="220" fill="#F59E0B" font-size="12" text-anchor="start">📊 استهلاك الذاكرة: 44.8%</text>
+
+                <defs>
+                    <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+
+        <h3>📈 الرصد الفوري لموارد الجهاز (System Metric Auditing via psutil)</h3>
+        <p>
+            تستخدم النواة السيبرانية مكتبة <strong>psutil</strong> المتطورة لربط كل نقرة محاسبية أو تعديل مخزون بحالة عتاد الجهاز. هذا الدمج يعطي الإدارة سجلاً شفافاً لمعالجة وحسم المشكلات التقنية:
+        </p>
+        <ul>
+            <li>استهلاك المعالج المركزي (CPU %) الفعلي لحظة حفظ الفواتير.</li>
+            <li>استهلاك ومساحة الذاكرة العشوائية المتوفرة (RAM) للتأكد من كفاءة الجهاز وعدم تسريب الذاكرة.</li>
+            <li>عدد العمليات النشطة الجارية بنظام التشغيل لكشف برمجيات التجسس أو الاختراقات الخلفية التي قد تجري بالتزامن على جهاز المحاسبة.</li>
+        </ul>
+
+        <h3>⛓️ التحقق من سلامة البلوكتشاين (Blockchain Hash Ledger)</h3>
+        <p>
+            يتم تسجيل كافة الأحداث والعمليات في النظام بتوليد هاش مشفر (SHA-256 Hash) لكل بلوك مأخوذ من هاش البلوك السابق. تتيح صفحة الأمان للمدير العام الضغط على زر التحقق من السلسلة؛ حيث يقوم النظام بمسح السجلات في أجزاء من الثانية والتحقق من الروابط التسلسلية للتأكد من عدم تلاعب أي شخص خارجي بالداتابيز، مما يضمن دقة جرد مالي مالي ومقاوم للعبث.
+        </p>
+    </section>
+
+    <!-- القسم الخامس: الانتقال ونقل البيانات للأنظمة القديمة -->
+    <section id="migration">
+        <h2>📥 نقل وتوطين البيانات للأنظمة القديمة والعتيقة</h2>
+        <p>
+            صُمم نظام لوردستاير ليراعي أن المتاجر القائمة قد تمتلك بالفعل برمجيات محاسبية عتيقة ترغب في الاستغناء عنها والانتقال السلس للنظام الحديث دون خسارة ملف الجرد الحالي أو الاضطرار لإدخال البيانات يدوياً.
+        </p>
+
+        <h3>⚙️ محرك الاستيراد الذكي للـ CSV</h3>
+        <p>
+            يتضمن النظام محرك استيراد ذكي يقوم بقراءة أي ملف CSV وتوطين أعمدته ديناميكياً (مثل مطابقة مسميات "الاسم" أو "رقم القطعة" أو "الكود" في الملفات القديمة وحفظها بأمان داخل الهيكل الجديد مع تشفير أسعار الشراء آلياً).
+        </p>
+
+        <div class="code-block">
+# مثال بروتوكول مطابقة الأعمدة الذكي في نواة البيانات:
+col_mappings = {
+    "رقم_القطعة": "part_id", "الكود": "part_id", "id": "part_id",
+    "الاسم_العربي": "name_ar", "الاسم": "name_ar",
+    "الكمية": "quantity", "سعر_البيع": "retail_price"
+}
+        </div>
+
+        <p>
+            يدعم النظام أيضاً التصدير الفوري لكامل مخزون متجرك بصيغتي CSV نظيف، أو كملف <strong>Excel ملوّن ومنسق</strong> ومقروء بوضوح عبر برمجيات أوفيس لتسهيل التحليل والمراجعة المالية للملاك والشركاء في أي وقت.
+        </p>
+    </section>
+
+    <footer>
+        <p>نظام لوردستاير المتكامل - جميع الحقوق محفوظة © 2026</p>
+    </footer>
+</div>
+
+</body>
+</html>
